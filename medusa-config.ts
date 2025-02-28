@@ -6,6 +6,13 @@ import { loadEnv, defineConfig, Modules } from "@medusajs/framework/utils";
 loadEnv(process.env.NODE_ENV!, process.cwd());
 
 module.exports = defineConfig({
+  admin: {
+    vite: () => ({
+      server: {
+        allowedHosts: process.env.MEDUSA_BACKEND_URL,
+      },
+    }),
+  },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
